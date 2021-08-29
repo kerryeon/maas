@@ -58,7 +58,7 @@ spec:
                   name: region-api
 {{- else }}
           - path: /
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: {{ tuple "maas_region" "internal" . | include "helm-toolkit.endpoints.hostname_short_endpoint_lookup" }}
