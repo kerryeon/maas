@@ -216,12 +216,12 @@ conf:
     logfile: nodeboot.log
     logrotate:
       # How many rotated logs to keep
-      rotate: '30'
+      rotate: "30"
       # Size threshold when a log should rotate
-      size: '100M'
+      size: "100M"
     # levels (emerg,alert,crit,error,warning,notice,info,debug)
     # use 'info' as default when overwritting the default
-    log_level: 'info'
+    log_level: "info"
   maas:
     override:
     append:
@@ -251,9 +251,9 @@ conf:
       # An external proxy server to use
       proxy_server: null
     images:
-      default_os: 'ubuntu'
-      default_image: 'bionic'
-      default_kernel: 'ga-18.04'
+      default_os: "ubuntu"
+      default_image: "bionic"
+      default_kernel: "ga-18.04"
     credentials:
       secret:
         namespace: maas
@@ -281,8 +281,8 @@ conf:
       # enlist_commissioning: if true, directly go into commissioning during enlistment
       enlist_commissioning: false
     # system user for console login/recovery in early phases of deployment
-    system_user: 'root'
-    system_passwd: 'password'
+    system_user: "root"
+    system_passwd: "password"
   drivers: null
   #### If you populates drivers, it will replace the 3rd party driver
   #### info that comes with MaaS. see structure below if it is needed
@@ -378,19 +378,19 @@ pod:
           readOnlyRootFilesystem: false
           capabilities:
             add:
-              - 'NET_ADMIN'
-              - 'SYS_MODULE'
+              - "NET_ADMIN"
+              - "SYS_MODULE"
           runAsUser: 0
         maas_ingress_vip:
           readOnlyRootFilesystem: false
           capabilities:
             add:
-              - 'NET_ADMIN'
+              - "NET_ADMIN"
         maas_ingress:
           readOnlyRootFilesystem: false
           capabilities:
             add:
-              - 'NET_BIND_SERVICE'
+              - "NET_BIND_SERVICE"
     ingress_errors:
       pod:
         runAsUser: 65534
@@ -444,12 +444,12 @@ pod:
           readOnlyRootFilesystem: false
           capabilities:
             add:
-              - 'DAC_READ_SEARCH'
-              - 'NET_ADMIN'
-              - 'SYS_ADMIN'
-              - 'SYS_PTRACE'
-              - 'SYS_RESOURCE'
-              - 'SYS_TIME'
+              - "DAC_READ_SEARCH"
+              - "NET_ADMIN"
+              - "SYS_ADMIN"
+              - "SYS_PTRACE"
+              - "SYS_RESOURCE"
+              - "SYS_TIME"
     region:
       pod:
         runAsUser: 0
@@ -460,12 +460,12 @@ pod:
           readOnlyRootFilesystem: false
           capabilities:
             add:
-              - 'SYS_ADMIN'
-              - 'NET_ADMIN'
-              - 'SYS_PTRACE'
-              - 'SYS_TIME'
-              - 'SYS_RESOURCE'
-              - 'DAC_READ_SEARCH'
+              - "SYS_ADMIN"
+              - "NET_ADMIN"
+              - "SYS_PTRACE"
+              - "SYS_TIME"
+              - "SYS_RESOURCE"
+              - "DAC_READ_SEARCH"
     api_test:
       pod:
         runAsUser: 0
@@ -496,8 +496,8 @@ pod:
       init_container: []
       syslog: []
   replicas:
-    rack: 2
-    region: 2
+    rack: 1
+    region: 1
     syslog: 1
   resources:
     enabled: false
@@ -654,7 +654,7 @@ endpoints:
     path:
       default: /MAAS
     scheme:
-      default: 'http'
+      default: "http"
     port:
       region_api:
         default: 80

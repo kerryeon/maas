@@ -1,0 +1,6 @@
+dependencies:
+- name: helm-toolkit
+  repository: https://registry.thecore.net.au/chartrepo/openstack
+  version: 0.2.15
+digest: sha256:e83cf43a2691c2c4b4055e4db2c02ac222d24cdaf909c1dcb9d8ae62d910462c
+generated: "2021-08-29T17:36:15.778797231+09:00"
