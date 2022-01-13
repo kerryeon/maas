@@ -18,7 +18,7 @@ ARG no_proxy
 ENV DEBIAN_FRONTEND noninteractive
 ENV container docker
 
-ENV MAAS_VERSION 2.8.7-8610-g.4a04daa43-0ubuntu1~18.04.1
+ENV MAAS_VERSION 2.8.7-8611-g.f2514168f-0ubuntu1~18.04.1
 
 RUN apt-get -qq update \
  && apt-get install -y \
@@ -28,6 +28,7 @@ RUN apt-get -qq update \
         software-properties-common \
         sudo \
         systemd \
+        ca-certificates \
 # Don't start any optional services except for the few we need.
 # (specifically, don't start avahi-daemon)
  && find /etc/systemd/system \
@@ -80,6 +81,9 @@ RUN systemctl enable journalctl-to-tty.service
 
 # quiet sudo for the maas user
 RUN umask 0337; echo 'Defaults:maas !pam_session, !syslog' > /etc/sudoers.d/99-maas-no-log
+
+# avoid triggering bind9 high cpu utilization bug
+RUN sed -i -e '$a\include "/etc/bind/bind.keys";' /etc/bind/named.conf
 
 # initalize systemd
 CMD ["/bin/bash", "-c", "exec /sbin/init --log-target=console 3>&1"]
